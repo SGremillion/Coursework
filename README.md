@@ -14,7 +14,7 @@ _Utilizes: Java_
 Software Process Model, software analysis and specification, software design, testing.
 - **_Local Library_** - Group project to create a Local Library website to track books being borrowed. Practices the process of Scrum - Product Owner and Development Team.
 
-_Utilizes: Python, Django, SQLite, PostgreSQL, Heroku_
+_Utilizes: Python, Django, SQLite, PostgreSQL, Heroku, Scrum_
 
 ## Full Stack Software Dev Course
 The courses in this program will help you develop skill sets in a variety of technologies including: Cloud foundations, HTML, CSS, JavaScript, GitHub, Node.js, React, Cloud Native practices, DevOps, CI/CD, Containers, Docker, Kubernetes, OpenShift, Istio, Python programming, Databases, SQL, NoSQL, Django ORM, Bootstrap, Application Security, Microservices, Serverless computing, and more. 
