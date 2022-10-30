@@ -20,7 +20,7 @@ _Utilizes: Python, Django, SQLite, PostgreSQL, Heroku, Scrum, Tailwind Framework
 Basic concepts of data organization, running time of a program, abstract types, data structures including linked lists, nary trees, sets and graphs, internal sorting.
 - **_Assignment 1_** - Reads an arithmetic expression, verifies that the infix is properly formed regard parentheses, converts the expression from infix to postfix using Reverse Polish Notation (RPN), evaluates the postfix expression, and prints the results. Practices stacks, linked lists, and logic.
 - **_Assignment 2_** - Accepts words and meanings, putting them into a Dictionary object binary search tree. Words can be added, deleted, searched, and sorted alphabetically. Practices binary trees, nodes, linked lists, and logic.
-- **_Assignment 3_** - In progress.
+- **_Assignment 3_** - Creates a hash table of Customers with their name, address, and phone number. Allows the addition and deletion of Customers from the has table. Also allows lookup and displaying of Customers. Practices hash tables, nodes, linked lists, and logic.
 - **_Assignment 4_** - In progress.
 
 _Utilizes: Java_
