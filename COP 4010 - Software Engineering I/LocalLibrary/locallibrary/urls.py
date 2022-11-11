@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import path
 from django.contrib import admin
+from register import views as register_views
 
 # Use  include() to add URLS from the catalog application and authentication system
 from django.urls import include
@@ -22,6 +23,7 @@ from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('register/', register_views.register, name='register'),
 ]
 
 
@@ -44,9 +46,14 @@ urlpatterns += [
     path('', RedirectView.as_view(url='/catalog/', permanent=True)),
 ]
 
-
-
 #Add Django site authentication urls (for login, logout, password management)
 urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),
+]
+
+from . import views_accounts
+
+# Add user home page
+urlpatterns+= [
+    path('accounts/home/',  views_accounts.UserHomeListView.as_view(), name='home'),
 ]

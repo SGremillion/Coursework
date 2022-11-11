@@ -25,13 +25,25 @@ def index(request):
         'num_instances': num_instances,
         'num_instances_available': num_instances_available,
         'num_authors': num_authors,
-	'num_genres': num_genres,
-	'num_languages': num_languages,
-	'num_visits': num_visits,
+	    'num_genres': num_genres,
+	    'num_languages': num_languages,
+	    'num_visits': num_visits,
     }
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
+
+def search_books(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        books = Book.objects.filter(title__icontains=searched)
+        context = {
+            'searched':searched,
+            'books':books
+        }
+        return render(request,'search_books.html',context)
+    else:
+        return render(request,'search_books.html',{})
 
 
 from django.views import generic
@@ -57,32 +69,6 @@ class AuthorListView(generic.ListView):
 class AuthorDetailView(generic.DetailView):
     """Generic class-based detail view for an author."""
     model = Author
-    
-class LanguageListView(generic.ListView):
-	model = Language
-	paginate_by = 10
-	
-class LanguageDetailView(generic.DetailView):
-	model = Language
-	context_object_name='language'
-	
-	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
-		context['books'] = Book.objects.filter(language=self.get_object().pk)
-		return context
-		
-class GenreListView(generic.ListView):
-	model = Genre
-	paginate_by = 10
-	
-class GenreDetailView(generic.DetailView):
-	model = Genre
-	context_object_name='genre'
-	
-	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
-		context['books'] = Book.objects.filter(genre=self.get_object().pk)
-		return context
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 

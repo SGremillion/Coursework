@@ -1,19 +1,24 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<h1>Mima's Local Library</h1>
 
-<p>The library has the following record counts:</p>
-<ul>
-<li><strong>Books:</strong> {{ num_books }}</li>
-<li><strong>Copies:</strong> {{ num_instances }}</li>
-<li><strong>Copies available:</strong> {{ num_instances_available }}</li>
-<li><strong>Authors:</strong> {{ num_authors }}</li>
-<li><strong>Genres:</strong> {{ num_genres }}</li>
-<li><strong>Languages:</strong> {{ num_languages}}</li>
-</ul>
+    <div id="index-block-content" class="m-5 max-w-[100vw]">
 
+        <h1 class="text-3xl font-semibold my-4">Local Library</h1>
 
-<p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+        <p>The library has the following record counts:</p>
+        <ul class="my-4">
+            <li><bdi class="font-semibold">Books:</bdi> {{ num_books }}</li>
+            <li><bdi class="font-semibold">Copies:</bdi> {{ num_instances }}</li>
+            <li><bdi class="font-semibold">Copies available:</bdi> {{ num_instances_available }}</li>
+            <li><bdi class="font-semibold">Authors:</bdi> {{ num_authors }}</li>
+            <li><bdi class="font-semibold">Genres:</bdi> {{ num_genres }}</li>
+            <li><bdi class="font-semibold">Languages:</bdi> {{ num_languages}}</li>
+        </ul>
+
+        <div class="page-visit">
+            <p class="my-4">You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+        </div>
+    </div>
 
 {% endblock %}

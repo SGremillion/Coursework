@@ -1,19 +1,48 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>All Borrowed Books</h1>
 
-    {% if bookinstance_list %}
-    <ul>
+    <div id="block-content" class="m-5 max-w-[100vw]">
+        <h1 class="text-3xl font-semibold my-4">All Borrowed Books</h1>
 
-      {% for bookinst in bookinstance_list %} 
-      <li class="{% if bookinst.is_overdue %}text-danger{% endif %}">
-        <a href="{% url 'book-detail' bookinst.book.pk %}">{{bookinst.book.title}}</a> ({{ bookinst.due_back }}) {% if user.is_staff %}- {{ bookinst.borrower }}{% endif %} {% if perms.catalog.can_mark_returned %}- <a href="{% url 'renew-book-librarian' bookinst.id %}">Renew</a>  {% endif %}
-      </li>
-      {% endfor %}
-    </ul>
+        {% if bookinstance_list %}
+            <table class="shadow border-collapse min-w-[500px] w-[50%]">
+                <thead>
+                    <tr>
+                        <th class="bg-gray-300 border border-gray-300">Book</th>
+                        <th class="bg-gray-300 border border-gray-300">Due Date</th>
+                        {% if user.is_staff %}
+                            <th class="bg-gray-300 border border-gray-300">Borrower</th>
+                        {% endif %}
+                        {% if perms.catalog.can_mark_returned %}
+                            <th class="bg-gray-300 border border-gray-300">Action</th>
+                        {% endif %}
+                    </tr>
+                </thead>
 
-    {% else %}
-      <p>There are no books borrowed.</p>
-    {% endif %}       
+                <tbody>
+                    {% for bookinst in bookinstance_list %}
+                        <tr>
+                            <td class="border border-gray-300">{{bookinst.book.title}}</td>
+                            {% if bookinst.is_overdue %}
+                                <td class="text-red-600 border border-gray-300"><a href="{%url 'book-detail' bookinst.book.pk %}">{{bookinst.due_back}}</a></td>
+                            {% else %}
+                                <td class="border border-gray-300"><a href="{%url 'book-detail' bookinst.book.pk %}">{{bookinst.due_back}}</a></td>
+                            {% endif %}
+                            {% if user.is_staff %}
+                                <td class="border border-gray-300">{{ bookinst.borrower }}</td>
+                            {% endif %}
+                            {% if perms.catalog.can_mark_returned %}
+                                <td class="border border-gray-300"><a href="{% url 'renew-book-librarian' bookinst.id %}">Renew</a></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {% else %}
+            <p>There are no books borrowed.</p>
+        {% endif %}
+    </div>
+
 {% endblock %}

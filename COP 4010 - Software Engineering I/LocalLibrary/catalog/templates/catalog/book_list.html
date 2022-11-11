@@ -1,21 +1,31 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Book List</h1>
 
-    {% if book_list %}
-    <ul>
+    <div id="block-content" class="m-5 max-w-[100vw]">
+        <h1 class = "text-3xl font-semibold my-4">Book List</h1>
 
-      {% for book in book_list %}
-      <li>
-        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
-      </li>
-      {% endfor %}
+        <table class="shadow border-collapse min-w-[500px] w-[50%]">
+            <thead>
+                <tr>
+                    <th class="bg-gray-300 border border-gray-300">Title</th>
+                    <th class="bg-gray-300 border border-gray-300">Author</th>
+                    <th class="bg-gray-300 border border-gray-300">Quanitity</th>
+                </tr>
+            </thead>
 
-    </ul>
+            <tbody>
+                {% if book_list %}
+                    {% for book in book_list %}
+                        <tr>
+                            <td class="border border-gray-300"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></td>
+                            <td class="border border-gray-300">{{book.author}}</td>
+                            <td class="border border-gray-300">{{book.bookinstance_set.all.count}}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
 
-    {% else %}
-      <p>There are no books in the library.</p>
-    {% endif %}       
 {% endblock %}
-

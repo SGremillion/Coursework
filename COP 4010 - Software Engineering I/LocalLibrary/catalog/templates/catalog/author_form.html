@@ -2,12 +2,15 @@
 
 {% block content %}
 
-<form action="" method="post">
-    {% csrf_token %}
-    <table>
-    {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit">
+    <div id="block-content" class="m-5 max-w-[100vw]">
+        <form action="" method="post">
+            {% csrf_token %}
+            <table>
+            {{ form.as_table }}
+            </table>
+            <input type="submit" value="Submit">
+
+        </form>
+    </div>
     
-</form>
 {% endblock %}

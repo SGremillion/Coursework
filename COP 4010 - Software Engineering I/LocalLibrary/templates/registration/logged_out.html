@@ -1,7 +1,10 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<p>Logged out!</p>  
 
-<a href="{% url 'login'%}">Click here to login again.</a>
+    <div id="block-content" class="m-5 max-w-[100vw]">
+        <p>Logged out!</p>  
+
+        <a href="{% url 'login'%}">Click here to login again.</a>
+    </div>
 {% endblock %}

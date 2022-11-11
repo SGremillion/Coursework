@@ -1,0 +1,24 @@
+/* all html on website */
+html {
+	font-family: Calibri Light, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans",
+    "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana,
+    "Verdana Ref", sans-serif;
+}
+
+/* the sidebar options */
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+	font-weight: bold;
+}
+
+/* the sidebar column (including background) */
+.col-sm-2 {
+	background-color: #DCDCDC;
+}
+
+/* the page main content */
+.col-sm-10 {
+	min-height: 100vh;; /* fills up height to 100% visibility */
+}

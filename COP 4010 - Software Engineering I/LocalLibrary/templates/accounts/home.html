@@ -1,0 +1,44 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <div id="block-content" class="m-5 max-w-[100vw]s">
+        <h1 class="text-3xl font-semibold my-4">Welcome Back, {{ user.get_username }}</h1>
+
+        <h4 class="pb-2">Your Borrowed Books</h4> 
+
+        {% if bookinstance_list %}
+            <table class="shadow border-collapse min-w-[300px] w-[50%]">
+                <thead>
+                    <tr>
+                        <th class="bg-gray-300 border border-gray-300">Book</th>
+                        <th class="bg-gray-300 border border-gray-300">Due Date</th>
+                        {% if perms.catalog.can_mark_returned %}
+                            <th class="bg-gray-300 border border-gray-300">Action</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for bookinst in bookinstance_list %}
+                        <tr>
+                            <td class="border border-gray-300"><a href="{%url 'book-detail' bookinst.book.pk %}">{{bookinst.book.title}}</a></td>
+                            {% if bookinst.is_overdue %}
+                                <td class="text-red-600 border border-gray-300">{{bookinst.due_back}}</td>
+                            {% else %}
+                                <td class="border border-gray-300">{{bookinst.due_back}}</td>
+                            {% endif %}
+                            {% if perms.catalog.can_mark_returned %}
+                                <td class="border border-gray-300"><a href="{% url 'renew-book-librarian' bookinst.id %}">Renew</a></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {% else %}
+            <p>You are not borrowing any books.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}
