@@ -23,7 +23,7 @@ class TestingHash {
 		String returnCust = "";
 		LinkedList<String> keyList = new LinkedList<>();
 
-		//pupulating table with customer data
+		//populating table with customer data
 		hashTable.insert(new Customer("Lisa", "123 Main Street", "123456789"));
 		keyList.add("123456789");
 		hashTable.insert(new Customer("Alex", "6134 Dream Rd", "5148675309"));
@@ -34,11 +34,9 @@ class TestingHash {
 		keyList.add("0123456780");
 		hashTable.insert(new Customer("Jessie", "404 Silicone Blvd", "987654321"));
 		keyList.add("987654321");
+		hashTable.insert(new Customer("Marc", "11 Midnight Mission", "654379103"));
+		keyList.add("654379103");
 
-		//main menu
-		//to display only the Main Menu, comment out the
-		//Assignment Output Instructions code below
-/*
 		String name, address, phone = "";
 		int menuChoice = 0;
 		Scanner input = new Scanner(System.in);
@@ -133,7 +131,7 @@ class TestingHash {
 					break;
 			}
 		}
-*/
+
 
 		/*Assignment Output Instructions
 		1. Build a hash table by inserting a phone number and the corresponding information.
@@ -143,7 +141,7 @@ class TestingHash {
 		//to display only the Assignment Output Instructions,
 		//comment out the Main Menu code above
 
-		System.out.println("1) Building a hash table by inserting a phone number and the corresponding information...");
+		/*System.out.println("1) Building a hash table by inserting a phone number and the corresponding information...");
 		System.out.println("-----------------------------------------------------------------------------------------");
 		System.out.println("Displaying current customers in table:");
 		for(int i = 0; i < keyList.size(); i++) {
@@ -169,6 +167,6 @@ class TestingHash {
 		for(int i = 0; i < keyList.size(); i++) {
 			returnCust = hashTable.getCustomer(keyList.get(i));
 			System.out.println(returnCust);
-		}
+		}*/
 	}
 }

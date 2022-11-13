@@ -19,14 +19,13 @@
 public class Customer {
 	private String name, address, phone;
 	private int hashKey;
-	private Customer next;
+	private Customer next = null;
 
 	//constructor
 	public Customer(String name, String address, String phone) {
 		this.name = name;
 		this.address = address;
 		this.phone = phone;
-		this.next = null;
 		this.hashKey = Integer.parseInt(phone.substring(5, 8));
 	}
 

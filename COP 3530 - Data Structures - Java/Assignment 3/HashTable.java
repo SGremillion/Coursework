@@ -17,13 +17,10 @@
 *		a hashValue to search through the has table,
 *		find the matching Customer, and delete them
 *
-* @author Stephanie Gremillion
+* @authors Stephanie Gremillion
 * @version 17.0.2
 * @since 2022/10/07
 */
-
-import java.util.LinkedList;
-import java.util.List;
 
 public class HashTable {
 	private final static int DEFAULT_SIZE = 101;
